@@ -27,3 +27,5 @@ const MONGO_URL = 'mongodb+srv://matchaccy:BeC1CiYYQpZ2ypX2@cluster0.6hxebjk.mon
 mongoose.Promise = Promise;
 mongoose.connect(MONGO_URL);
 mongoose.connection.on('error', (error: Error) => console.log(error));
+
+
