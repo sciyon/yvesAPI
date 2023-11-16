@@ -7,13 +7,14 @@ import cors from 'cors';
 import mongoose, { mongo } from 'mongoose';
 
 import router from './router';
+import { swaggerSpec } from './utils/swagger';
+import swaggerUi from 'swagger-ui-express';
 
 const app = express();
 
 app.use(cors({
   credentials: true,
 }))
-
 app.use(compression());
 app.use(cookieParser());
 app.use(bodyParser.json());
@@ -32,3 +33,4 @@ mongoose.connection.on('error', (error: Error) => console.log(error));
 
 
 app.use('/', router());
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
